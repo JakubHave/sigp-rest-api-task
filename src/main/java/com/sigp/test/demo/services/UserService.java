@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface UserService {
 
-    List<String> getUsernames(final int threshold);
+    String[] getUsernames(final int threshold);
 
 }

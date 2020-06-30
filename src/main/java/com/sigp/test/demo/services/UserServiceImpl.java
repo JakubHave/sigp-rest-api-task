@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
     private final WebClient webClient = WebClient.create("https://jsonmock.hackerrank.com/api/article_users");
 
     @Override
-    public List<String> getUsernames(int threshold) {
+    public String[] getUsernames(int threshold) {
         UsersDataPage firstUserDataPage = getUsersDataPage(1);
         final int total_pages = firstUserDataPage.getTotal_pages();
 
@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
             userDataList.addAll(filterUserDataList(getUsersDataPage(i).getData(), threshold));
         }
 
-        return  userDataList.stream().map(UserData::getUsername).collect(Collectors.toList());
+        return  userDataList.stream().map(UserData::getUsername).toArray(String[]::new);
     }
 
     private UsersDataPage getUsersDataPage(int numOfPage){

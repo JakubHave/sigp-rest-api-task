@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 public class RestApiController{
 
@@ -17,7 +15,7 @@ public class RestApiController{
     }
 
     @GetMapping("/users/{threshold}")
-    public List<String> getUsernames(@PathVariable("threshold") final int threshold){
+    public String[] getUsernames(@PathVariable("threshold") final int threshold){
         return userService.getUsernames(threshold);
     }
 
